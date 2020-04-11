@@ -1,21 +1,12 @@
-<html>
-  <style>
-    body{
-      font-size: 15pt;
-      font-family: arial;
-    }
-  </style>
+{% extends 'base.html' %}
 
+{% block head %}
 
-<body>
-  <h1>Housing Search Engine</h1>
-  <!-- <div>{{data}}</div>
+{% endblock %}
 
-  <div>
-    {% for n in data %}
-    <div>{{n}}</div>
-    {% endfor %}
-  </div> -->
+{% block body %}
+
+<h1>Housing Search Engine</h1>
 
   <label for="cities">Cities : </label>
   <select name="cities" id="cities" onfocus="this.selectedIndex = -1;">
@@ -33,10 +24,36 @@
       {% endfor %}
   </select>
 
+{% endblock %}
 
 
 
-<p><a href="another">Go to the other page</a></p>
+
+<!-- <html>
+  <style>
+    body{
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style> -->
+
+
+<!-- <body> -->
+
+  <!-- <div>{{data}}</div>
+
+  <div>
+    {% for n in data %}
+    <div>{{n}}</div>
+    {% endfor %}
+  </div> -->
+
+
+
+
+
+
+<!-- <p><a href="another">Go to the other page</a></p>
 
 <form method="POST" action="/add">
 <p>Name of new computer scientist: <input type="text" name="name"> <input type="submit" value="Add"></p>
@@ -45,4 +62,4 @@
 </body>
 
 
-</html>
+</html> -->
