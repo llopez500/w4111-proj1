@@ -112,6 +112,7 @@ def index():
   cities = []
   for result in cursor:
     cities.append(result['city'])  # can also be accessed using result[0]
+  cities = list(set(cities))
   cursor.close()
 
   #

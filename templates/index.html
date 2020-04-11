@@ -1,6 +1,6 @@
 <html>
   <style>
-    body{ 
+    body{
       font-size: 15pt;
       font-family: arial;
     }
@@ -16,6 +16,13 @@
     <div>{{n}}</div>
     {% endfor %}
   </div>
+
+  <label for="cities">Cities : </label>
+    <select name="cities" id="cities" onfocus="this.selectedIndex = -1;">
+        {% for item in data %}
+          <option value="{{ item}}">{{item}}</option>
+        {% endfor %}
+    </select>
 
 <p><a href="another">Go to the other page</a></p>
 
