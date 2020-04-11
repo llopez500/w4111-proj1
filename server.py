@@ -29,7 +29,7 @@ app = Flask(__name__, template_folder=tmpl_dir)
 #
 #     DATABASEURI = "postgresql://gravano:foobar@35.243.220.243/proj1part2"
 #
-DATABASEURI = "postgresql://user:password@35.243.220.243/proj1part2"
+DATABASEURI = "postgresql://ll3297:3670@35.231.103.173/proj1part2"
 
 
 #
@@ -108,7 +108,7 @@ def index():
   #
   # example of a database query
   #
-  cursor = g.conn.execute("SELECT * FROM living_space")
+  cursor = g.conn.execute("SELECT * FROM living_space;")
   cities = []
   for result in cursor:
     cities.append(result['city'])  # can also be accessed using result[0]
