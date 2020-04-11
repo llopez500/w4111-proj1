@@ -110,9 +110,13 @@ def index():
   #
   cursor = g.conn.execute("SELECT * FROM living_space;")
   cities = []
+  types = []
   for result in cursor:
     cities.append(result['city'])  # can also be accessed using result[0]
+    types.append(result['type'])
   cities = list(set(cities))
+  types = list(set(types))
+
   cursor.close()
 
   #
@@ -141,7 +145,7 @@ def index():
   #     <div>{{n}}</div>
   #     {% endfor %}
   #
-  context = dict(data = cities)
+  context = dict(cities = cities, types = types)
 
 
   #
