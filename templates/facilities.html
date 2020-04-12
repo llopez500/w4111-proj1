@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+<div  align="left">
+  <p class="important">
+    Hospital <br>
+  <table align="left">
+      <tr>
+        <th>name</th>
+        <th>number of doctors</th>
+        <th>insurance</th>
+        <th>rating</th>
+      </tr>
+
+      {% for hos in hospital %}
+        <tr>
+          <td scope="row"> {{hos.name}}  </td>
+          <td scope="row"> {{hos.number_of_doctors}}  </td>
+          <td scope="row"> {{hos.insurance_accepted}}  </td>
+          <td scope="row"> {{hos.rating}}  </td>
+        </tr>
+      {% endfor %}
+
+  </table>
+</div>
+
+<br><br><br><br>
+
+  <br>
+  <p class="important">
+    Entertainment <br>
+
+<div  align="left">
+  <table align="left">
+  <tr>
+    <th>name</th>
+    <th>type</th>
+    <th>rating</th>
+  </tr>
+
+
+  {% for en in entertainment %}
+    <tr>
+      <td scope="row"> {{en.name}}  </td>
+      <td scope="row"> {{en.entertainment_type}}  </td>
+      <td scope="row"> {{en.rating}}  </td>
+    </tr>
+  {% endfor %}
+
+
+</table>
+</div>
+<br><br><br><br>
+<div align="left">
+  <p class="important">
+    School <br>
+
+
+  <table align="left">
+    <tr>
+      <th>name</th>
+      <th>school type</th>
+      <th>rating</th>
+    </tr>
+
+    {% for sc in school %}
+      <tr>
+        <td scope="row"> {{sc.name}}  </td>
+        <td scope="row"> {{sc.school_type}}  </td>
+        <td scope="row"> {{sc.rating}}  </td>
+      </tr>
+    {% endfor %}
+
+  </table>
+
+
+</div>
+
+{% endblock %}

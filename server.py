@@ -154,6 +154,72 @@ def index():
   #
   return render_template("index.html", **context)
 
+
+@app.route('/housing_info', methods=['POST'])
+def show():
+  city = request.form['city']
+  type = request.form['type']
+  query = "SELECT * FROM living_space WHERE city=\'" + city + "\' and type=\'" + type + "\';"
+  cursor = g.conn.execute(query)
+  houses = []
+  for result in cursor:
+      houses.append(result)
+
+  cursor.close()
+
+  return render_template("housing.html", houses=houses)
+
+
+
+
+
+@app.route('/details/<int:id>')
+def show_details(id):
+  query = "SELECT facility_id FROM within_1_mile w NATURAL JOIN living_space l  WHERE w.living_space_id=\'" + str(id) + "\';"
+  cursor = g.conn.execute(query)
+  facility_id = []
+  for result in cursor:
+    facility_id.append(str(result.facility_id))
+  cursor.close()
+
+  # search for hospital
+
+  query = "SELECT * FROM hospital WHERE facility_id in (" + ','.join(facility_id)+ ");"
+  cursor = g.conn.execute(query)
+
+  hospital = []
+  for result in cursor:
+    hospital.append(result)
+  cursor.close()
+
+  # search for entertainment
+
+  query = "SELECT * FROM entertainment WHERE facility_id in (" + ','.join(facility_id)+ ");"
+  cursor = g.conn.execute(query)
+
+  entertainment = []
+  for result in cursor:
+    entertainment.append(result)
+  cursor.close()
+
+  # search for school
+
+  query = "SELECT * FROM school WHERE facility_id in (" + ','.join(facility_id)+ ");"
+  cursor = g.conn.execute(query)
+
+  school = []
+  for result in cursor:
+    school.append(result)
+  cursor.close()
+
+  context = dict(hospital = hospital, entertainment  = entertainment, school = school)
+
+  return render_template("facilities.html", **context)
+
+
+
+
+
 #
 # This is an example of a different path.  You can see it at:
 #
@@ -162,23 +228,27 @@ def index():
 # Notice that the function name is another() rather than index()
 # The functions for each app.route need to have different names
 #
-@app.route('/another')
-def another():
-  return render_template("another.html")
+# @app.route('/another')
+# def another():
+#   return render_template("another.html")
 
 
 # Example of adding new data to the database
-@app.route('/add', methods=['POST'])
-def add():
-  name = request.form['name']
-  g.conn.execute('INSERT INTO test(name) VALUES (%s)', name)
-  return redirect('/')
+# @app.route('/add', methods=['POST'])
+# def add():
+#   name = request.form['name']
+#   g.conn.execute('INSERT INTO test(name) VALUES (%s)', name)
+#   return redirect('/')
 
 
 @app.route('/login')
 def login():
     abort(401)
     this_is_never_executed()
+
+
+
+#_________________________________IGNORE________________________________________
 
 
 if __name__ == "__main__":

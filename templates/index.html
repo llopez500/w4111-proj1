@@ -8,21 +8,29 @@
 
 <h1>Housing Search Engine</h1>
 
-  <label for="cities">Cities : </label>
-  <select name="cities" id="cities" onfocus="this.selectedIndex = -1;">
-      {% for item in cities %}
-          <option value="{{item}}"> {{item}} </option>
-      {% endfor %}
-  </select>
+<form id ="prop" style="display: inline;" action="{{url_for('show')}}" method='post'>
+    <label for="cities">Cities : </label>
+    <select name="city" id="city" onfocus="this.selectedIndex = -1;">
+        {% for item in cities %}
+            <option value="{{item}}"> {{item}} </option>
+        {% endfor %}
+    </select>
 
 
+    <label for="types">Type : </label>
+    <select name="type" id="type" onfocus="this.selectedIndex = -1;">
+        {% for item in types %}
+            <option value="{{item}}"> {{item}} </option>
+        {% endfor %}
+    </select>
 
-  <label for="types">Type : </label>
-  <select name="types" id="types" onfocus="this.selectedIndex = -1;">
-      {% for item in types %}
-          <option value="{{item}}"> {{item}} </option>
-      {% endfor %}
-  </select>
+    <!-- <button type="submit" form="prop" value="Submit">
+      Submit
+    </button> -->
+    <input type ="submit" value="Search">
+
+
+</form>
 
 {% endblock %}
 
